@@ -61,7 +61,6 @@ Once expanded, you'll be able to use the ```--models``` and ```--exclude``` mode
 
 Note that you can also right-click on models to interactively filter and explore the graph.
 
-
 ### **More information**
 - [Flipside](https://flipsidecrypto.xyz/)
 - [Data Studio](https://flipsidecrypto.xyz/studio)
