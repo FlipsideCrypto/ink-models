@@ -1,3 +1,6 @@
 workflow_name,workflow_schedule
-dbt_run_streamline_chainhead,"<insert-cron-schedule>"
-dbt_run_scheduled_main,"<insert-cron-schedule>"
+dbt_run_streamline_chainhead,"9,39 * * * *"
+dbt_run_scheduled_main,"48 * * * *"
+dbt_test_intraday,"21 */4 * * *"
+dbt_test_daily,"23 7 * * *"
+dbt_run_dev_refresh,"28 15 * * 1"
