@@ -1,6 +1,6 @@
 {% docs __overview__ %}
 
-# Welcome to the Flipside Crypto Core Models Documentation!
+# Welcome to the Flipside Crypto Ink Models Documentation!
 
 ## **What does this documentation cover?**
 The documentation included here details the design of the Core tables and views available via [Flipside Crypto.](https://flipsidecrypto.xyz/) For more information on how these models are built, please see [the github repository.](https://github.com/FlipsideCrypto/ink-models)
@@ -17,7 +17,6 @@ There is more information on how to use dbt docs in the last section of this doc
 **Click on the links below to jump to the documentation for each schema.**
 
 ### Core Tables (ink.core)
-
 
 **Fact Tables:**
 - [fact_blocks](https://flipsidecrypto.github.io/ink-models/#!/model/model.fsc_evm.core__fact_blocks)
