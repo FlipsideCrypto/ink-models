@@ -42,8 +42,8 @@ jobs:
       
       - name: Build Recent Testing Views
         run: |
-          dbt run -m "fsc_evm,tag:recent_test" --exclude models.main_package.core.gold.tests.ez_token_transfers models.main_package.core.gold.tests.ez_native_transfers models.main_package.core.nft.tests.ez_nft_transfers
+          dbt run -m "fsc_evm,tag:recent_test" --exclude models.main_package.core.gold.tests.ez_token_transfers.test_gold__ez_token_transfers models.main_package.core.gold.tests.ez_native_transfers.test_gold__ez_native_transfers models.main_package.core.nft.tests.ez_nft_transfers.test_nft__ez_nft_transfers
 
       - name: Run Recent Tests
         run: |
-          dbt test -m "fsc_evm,tag:recent_test" --exclude models.main_package.core.gold.tests.ez_token_transfers models.main_package.core.gold.tests.ez_native_transfers models.main_package.core.nft.tests.ez_nft_transfers
+          dbt test -m "fsc_evm,tag:recent_test" --exclude models.main_package.core.gold.tests.ez_token_transfers.test_gold__ez_token_transfers models.main_package.core.gold.tests.ez_native_transfers.test_gold__ez_native_transfers models.main_package.core.nft.tests.ez_nft_transfers.test_nft__ez_nft_transfers
