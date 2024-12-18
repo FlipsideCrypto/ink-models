@@ -1,4 +1,4 @@
-<evm_chain>:
+ink:
   target: prod
   outputs:
     dev:
