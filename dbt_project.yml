@@ -153,9 +153,15 @@ vars:
   PRICES_NATIVE_SYMBOLS: "ETH"
   PRICES_PROVIDER_PLATFORMS: ["ink"]
 
+  ### MAIN_PACKAGE VARIABLES END ###
+
+  ### DECODER_PACKAGE VARIABLES BEGIN ###
+
   ## REQUIRED
   BLOCK_EXPLORER_NAME: "InkOnChain"
   BLOCK_EXPLORER_ABI_URL: "https://explorer.inkonchain.com/api/v2/smart-contracts/"
   # BRONZE_CONTRACT_ABIS_FULL_REFRESH: True #comment out for incremental runs
+
+  ### DECODER_PACKAGE VARIABLES END ###
 
 #### FSC_EVM END ####
