@@ -78,6 +78,12 @@ models:
         +enabled: true
       utils:
         +enabled: true
+    decoder_package:
+      +enabled: false
+      abis:
+        +enabled: true
+      decoded_logs:
+        +enabled: true
 
 vars:
   "dbt_date:time_zone": GMT
@@ -126,30 +132,36 @@ vars:
   GLOBAL_PROD_DB_NAME: 'ink' 
   GLOBAL_NODE_SECRET_PATH: 'Vault/prod/ink/quicknode/mainnet'
   GLOBAL_BLOCKS_PER_HOUR: 3600
-  GLOBAL_WRAPPED_ASSET_ADDRESS: ''
+  GLOBAL_WRAPPED_ASSET_ADDRESS: '0x4200000000000000000000000000000000000006'
   ### GLOBAL VARIABLES END ###
 
   ### MAIN_PACKAGE VARIABLES BEGIN ###
 
   ### CORE ###
-
   TRACES_HISTORY_NEW_BUILD: True
   TRACES_HISTORY_SQL_LIMIT: 1500000
   TRACES_HISTORY_PRODUCER_BATCH_SIZE: 3000
   TRACES_HISTORY_WORKER_BATCH_SIZE: 1000
 
-  GOLD_FULL_REFRESH: True
-  SILVER_FULL_REFRESH: True
-
   TRACES_FULL_RELOAD_START_BLOCK: 1500000
+
+  # GOLD_FULL_REFRESH: True #comment out for prod
+  # SILVER_FULL_REFRESH: True #comment out for prod
+  # BRONZE_FULL_REFRESH: True #comment out for prod
 
   ### PRICES ###
   PRICES_NATIVE_SYMBOLS: "ETH"
   PRICES_PROVIDER_PLATFORMS: ["ink"]
 
+  ### MAIN_PACKAGE VARIABLES END ###
+
+  ### DECODER_PACKAGE VARIABLES BEGIN ###
+
   ## REQUIRED
-  BLOCK_EXPLORER_NAME: "InkScan"
-  BLOCK_EXPLORER_ABI_URL: "https://api.inkscan.xyz/api?module=contract&action=getabi&address=" # TODO: update this
-  BLOCK_EXPLORER_ABI_API_KEY_PATH: "Vault/prod/block_explorers/ink_scan"
+  BLOCK_EXPLORER_NAME: "InkOnChain"
+  BLOCK_EXPLORER_ABI_URL: "https://explorer.inkonchain.com/api/v2/smart-contracts/"
+  # BRONZE_CONTRACT_ABIS_FULL_REFRESH: True #comment out for incremental runs
+
+  ### DECODER_PACKAGE VARIABLES END ###
 
 #### FSC_EVM END ####

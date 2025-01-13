@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     branches:
       - "main"
-
+    
 env:
   DBT_PROFILES_DIR: ./
 
@@ -20,12 +20,12 @@ env:
 
 concurrency:
   group: ${{ github.workflow }}
-
+  
 jobs:
   run_dbt_jobs:
     runs-on: ubuntu-latest
     environment: 
-      name: workflow_test
+      name: workflow_prod
 
     steps:
       - uses: actions/checkout@v3
@@ -40,6 +40,10 @@ jobs:
           pip install -r requirements.txt
           dbt deps
       
-      - name: Run ABI Models
+      - name: Update ABI models
         run: |
           dbt run -m "fsc_evm,tag:silver_abis" "fsc_evm,tag:gold_abis"
+
+      - name: Kick off decoded logs history, if there are new ABIs from users
+        run: |
+          dbt run-operation fsc_evm.run_decoded_logs_history
