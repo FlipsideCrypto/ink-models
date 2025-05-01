@@ -19,9 +19,9 @@ There is more information on how to use dbt docs in the last section of this doc
 ### Core Tables (ink.core)
 
 **Dimension Tables:**
+- [dim_labels](https://flipsidecrypto.github.io/ink-models/#!/model/model.fsc_evm.core__dim_labels)
 - [dim_contracts](https://flipsidecrypto.github.io/ink-models/#!/model/model.fsc_evm.core__dim_contracts)
 - [dim_contract_abis](https://flipsidecrypto.github.io/ink-models/#!/model/model.fsc_evm.core__dim_contract_abis)
-- [dim_labels](https://flipsidecrypto.github.io/ink-models/#!/model/model.fsc_evm.core__dim_labels)
 
 **Fact Tables:**
 - [fact_blocks](https://flipsidecrypto.github.io/ink-models/#!/model/model.fsc_evm.core__fact_blocks)

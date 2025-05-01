@@ -71,21 +71,29 @@ models:
     +on_schema_change: "append_new_columns"
     main_package:
       +enabled: false # disable main_package by default, enabled other packages as needed
+      admin:
+        +enabled: true
       core:
         +enabled: true # enable subpackages, as needed
       github_actions:
         +enabled: true
+      labels:
+        +enabled: true
+      observability:
+        +enabled: true
       prices:
         +enabled: true
       utils:
-        +enabled: true
-      labels:
         +enabled: true
     decoder_package:
       +enabled: false
       abis:
         +enabled: true
       decoded_logs:
+        +enabled: true
+    curated_package:
+      +enabled: false
+      stats:
         +enabled: true
     scores_package:
       +enabled: true
@@ -96,11 +104,8 @@ vars:
   STREAMLINE_USE_DEV_FOR_EXTERNAL_TABLES: False
   UPDATE_UDFS_AND_SPS: False
   UPDATE_SNOWFLAKE_TAGS: True
-  OBSERV_FULL_TEST: False
-  WAIT: 0
   HEAL_MODEL: False
   HEAL_MODELS: []
-  START_GHA_TASKS: False
 
   #### STREAMLINE 2.0 BEGIN ####
 
@@ -127,53 +132,3 @@ vars:
         - DBT_CLOUD_INK # replace with the name of the chain
 
   #### STREAMLINE 2.0 END ####
-
-  #### FSC_EVM BEGIN ####
-
-  # Please visit https://github.com/FlipsideCrypto/fsc-evm/wiki for more information on required and optional variables
-
-  ### GLOBAL VARIABLES BEGIN ###
-  ## REQUIRED
-  GLOBAL_PROD_DB_NAME: "ink"
-  GLOBAL_NODE_SECRET_PATH: "Vault/prod/ink/quicknode/mainnet"
-  GLOBAL_BLOCKS_PER_HOUR: 3600
-  GLOBAL_WRAPPED_ASSET_ADDRESS: "0x4200000000000000000000000000000000000006"
-  ### GLOBAL VARIABLES END ###
-
-  ### MAIN_PACKAGE VARIABLES BEGIN ###
-
-  ### CORE ###
-  TRACES_HISTORY_NEW_BUILD: True
-  TRACES_HISTORY_SQL_LIMIT: 1500000
-  TRACES_HISTORY_PRODUCER_BATCH_SIZE: 3000
-  TRACES_HISTORY_WORKER_BATCH_SIZE: 1000
-
-  TRACES_FULL_RELOAD_START_BLOCK: 1500000
-
-  # GOLD_FULL_REFRESH: True #comment out for prod
-  # SILVER_FULL_REFRESH: True #comment out for prod
-  # BRONZE_FULL_REFRESH: True #comment out for prod
-
-  ### PRICES ###
-  PRICES_NATIVE_SYMBOLS: "ETH"
-  PRICES_PROVIDER_PLATFORMS: ["ink"]
-
-  ### MAIN_PACKAGE VARIABLES END ###
-
-  ### DECODER_PACKAGE VARIABLES BEGIN ###
-
-  ## REQUIRED
-
-  ### DECODER_PACKAGE VARIABLES BEGIN ###
-  DECODER_ABIS_BLOCK_EXPLORER_NAME: "InkOnChain"
-  DECODER_ABIS_BLOCK_EXPLORER_URL: "https://explorer.inkonchain.com/api/v2/smart-contracts/"
-  DECODER_ABIS_BLOCK_EXPLORER_URL_SUFFIX: ""
-  DECODER_ABIS_BLOCK_EXPLORER_SECRET_PATH: ""
-  DECODER_ABIS_RELEVANT_CONTRACT_LIMIT: 50
-  DECODER_ABIS_RELEVANT_CONTRACT_COUNT: 200
-  DECODER_ABIS_BRONZE_API_TABLE_ENABLED: True
-
-  ### DECODER_PACKAGE VARIABLES END ###
-
-  ### DECODER_PACKAGE VARIABLES END ###
-#### FSC_EVM END ####
