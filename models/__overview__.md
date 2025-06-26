@@ -40,6 +40,9 @@ There is more information on how to use dbt docs in the last section of this doc
 - [ez_asset_metadata](https://flipsidecrypto.github.io/ink-models/#!/model/model.fsc_evm.price__ez_asset_metadata)
 - [ez_prices_hourly](https://flipsidecrypto.github.io/ink-models/#!/model/model.fsc_evm.price__ez_prices_hourly)
 
+### DeFi Tables (ink.defi)
+- [ez_bridge_activity](https://flipsidecrypto.github.io/ink-models/#!/model/model.ink_models.defi__ez_bridge_activity)
+
 ### NFT Tables (ink.nft)
 - [ez_nft_transfers](https://flipsidecrypto.github.io/ink-models/#!/model/model.fsc_evm.nft__ez_nft_transfers)
 
