@@ -8,8 +8,44 @@
     tags = ['silver_bridge','defi','bridge','curated','heal']
 ) }}
 
-WITH layerzero_v2 AS (
+WITH across_v3 AS (
 
+    SELECT
+        block_number,
+        block_timestamp,
+        origin_from_address,
+        origin_to_address,
+        origin_function_signature,
+        tx_hash,
+        event_index,
+        bridge_address,
+        event_name,
+        platform,
+        'v3' AS version,
+        sender,
+        receiver,
+        destination_chain_receiver,
+        destination_chain_id :: STRING AS destination_chain_id,
+        NULL AS destination_chain,
+        token_address,
+        NULL AS token_symbol,
+        amount AS amount_unadj,
+        _log_id AS _id,
+        _inserted_timestamp
+    FROM
+        {{ ref('silver_bridge__across_v3fundsdeposited') }}
+
+{% if is_incremental() and 'across_v3' not in var('HEAL_MODELS') %}
+WHERE
+    _inserted_timestamp >= (
+        SELECT
+            MAX(_inserted_timestamp) - INTERVAL '{{ var("LOOKBACK", "4 hours") }}'
+        FROM
+            {{ this }}
+    )
+{% endif %}
+),
+layerzero_v2 AS (
     SELECT
         block_number,
         block_timestamp,
@@ -82,6 +118,11 @@ WHERE
 {% endif %}
 ),
 all_protocols AS (
+    SELECT
+        *
+    FROM
+        across_v3
+    UNION ALL
     SELECT
         *
     FROM
@@ -383,7 +424,10 @@ SELECT
     amount_unadj,
     amount,
     amount_usd,
-    ifnull(token_is_verified, false) AS token_is_verified,
+    IFNULL(
+        token_is_verified,
+        FALSE
+    ) AS token_is_verified,
     _id,
     _inserted_timestamp,
     {{ dbt_utils.generate_surrogate_key(
