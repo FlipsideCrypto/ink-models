@@ -104,6 +104,8 @@ models:
           +enabled: true
         bridge:
           +enabled: true
+        lending:
+          +enabled: true
     scores_package:
       +enabled: true
 
