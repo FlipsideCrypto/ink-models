@@ -17,10 +17,7 @@ test-paths: ["tests"]
 seed-paths: ["data"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
-docs-paths:
-  ["dbt_packages/fsc_evm/doc_descriptions", "models/doc_descriptions", "models"]
-
-target-path: "target" # directory which will store compiled SQL files
+docs-paths: ["dbt_packages/fsc_evm/doc_descriptions", "models/doc_descriptions", "models"]
 clean-targets: # directories to be removed by `dbt clean`
   - "target"
   - "dbt_modules"
@@ -121,11 +118,11 @@ models:
 
 vars:
   "dbt_date:time_zone": GMT
-  STREAMLINE_INVOKE_STREAMS: False
-  STREAMLINE_USE_DEV_FOR_EXTERNAL_TABLES: False
-  UPDATE_UDFS_AND_SPS: False
-  UPDATE_SNOWFLAKE_TAGS: True
-  HEAL_MODEL: False
+  STREAMLINE_INVOKE_STREAMS: false
+  STREAMLINE_USE_DEV_FOR_EXTERNAL_TABLES: false
+  UPDATE_UDFS_AND_SPS: false
+  UPDATE_SNOWFLAKE_TAGS: true
+  HEAL_MODEL: false
   HEAL_MODELS: []
 
   #### STREAMLINE 2.0 BEGIN ####
